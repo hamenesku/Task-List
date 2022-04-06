@@ -1,0 +1,45 @@
+<div class="container py-5 bg-dark">
+  <div>
+    <input class="box form-control text-center" type="text" [(ngModel)]="newTask">
+    <input class="btn btn-light w-100 my-3"      type="button" (click)="addTask()" value="Insert">
+  </div>
+</div>
+<div class="container my-5">
+
+  
+  <div class="row">
+    <div class="col-8">
+      <div cdkDropListGroup class="row">
+        <div  *ngFor="let recipient of env | keyvalue" class=" col-4">
+          <h2>{{recipient.key}}</h2>
+          <div cdkDropList [cdkDropListData]="this.env[this.newEnvironment]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box bg-info" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+
+        <div class=" col-4">
+          <h2>To do</h2>
+          <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box bg-info" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class=" col-4">
+          <h2>Done</h2>
+          <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box bg-danger" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="col-4 py-5 bg-light border rounded-3">
+      <input class="box form-control text-center" type="text" [(ngModel)]="newEnvironment" placeholder="Environment Name">
+      <input class="btn btn-dark w-100 my-3"      type="button" (click)="addEnvironment()" value="Generate">
+    </div>
+  </div>
+
+
+
+</div>
